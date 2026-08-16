@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>حدوتة الشبراوي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Amiri', 'Cairo', sans-serif; background-color: #090d16; color: #f1f5f9; }
+        .dropdown-menu { display: none; }
+        .dropdown-menu.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- الهيدر -->
+    <header class="bg-slate-950 border-b border-slate-800 p-3 sticky top-0 z-50">
+        <div class="flex items-center justify-between w-full max-w-md mx-auto" dir="ltr">
+            
+            <!-- زرار القائمة على الشمال -->
+            <div class="relative" dir="rtl">
+                <button onclick="toggleMenu()" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
+                <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
+                    <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
+                    <a href="whatsapp.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💬 الواتساب</a>
+                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💻 البرامج</a>
+                    <a href="keyboards.html" class="block px-4 py-2 text-sm hover:bg-slate-800">⌨️ الكيبوردات</a>
+                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">🎮 الألعاب</a>
+                    <!-- زرار التواصل مع المطور (جوه القائمة بس ومش في الرئيسية) -->
+                    <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
+                </div>
+            </div>
+
+            <!-- العنوان في النص -->
+            <h1 class="text-lg font-black text-cyan-400" dir="rtl">حدوتة الشبراوي</h1>
+            
+            <!-- عنصر توازن على اليمين -->
+            <div class="w-[84px]"></div> 
+        </div>
+    </header>
+
+    <!-- المحتوى -->
+    <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
+        <!-- إعلان 1 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">إعلان علوي</div>
+
+        <img src="me.png" alt="حدوتة الشبراوي" class="w-28 h-28 mx-auto rounded-full border-2 border-cyan-500/30 mb-4 object-cover">
+        <h2 class="text-xl font-bold mb-3 text-white">كل اللي بتدور عليه هنا!</h2>
+        
+        <!-- التعريف -->
+        <p class="text-slate-300 text-sm bg-slate-900/50 p-4 rounded-2xl border border-slate-800 mb-6 leading-relaxed">
+            الموقع ده هتلاقي فيه أي حاجة أنت بتدور عليها تخص عالم البرمجيات، وبكل ثقة مفيش برامج مش شغالة، مفيش اشتغالات زي بقيت المواقع. اللي هتلاقيه هنا البرامج اللي شغالة واللي مضمونة 100% بس.
+        </p>
+
+        <!-- إعلان 2 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">إعلان وسطى</div>
+
+        <!-- الأقسام (بدون زرار المطور برة) -->
+        <div class="space-y-3 mb-6">
+            <a href="whatsapp.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-emerald-400 font-bold hover:border-cyan-500 transition">💬 <span class="mr-3">نسخ الواتساب</span></a>
+            <a href="programs.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-cyan-400 font-bold hover:border-cyan-500 transition">💻 <span class="mr-3">البرامج المكركة</span></a>
+            <a href="keyboards.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-purple-400 font-bold hover:border-cyan-500 transition">⌨️ <span class="mr-3">الكيبوردات</span></a>
+            <a href="games.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-orange-400 font-bold hover:border-cyan-500 transition">🎮 <span class="mr-3">الألعاب المهكرة</span></a>
+        </div>
+
+        <!-- إعلان 3 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs">إعلان سفلي</div>
+    </main>
+
+    <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
+        <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('dropdown').classList.toggle('active'); }
+        
+        window.onclick = function(event) {
+            if (!event.target.matches('button')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
