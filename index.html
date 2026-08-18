@@ -10,6 +10,20 @@
         body { font-family:  Amiri ,  Cairo , sans-serif; background-color: #090d16; color: #f1f5f9; }
         .dropdown-menu { display: none; }
         .dropdown-menu.active { display: block; }
+        /* ستايل شريط الأخبار المتحرك */
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .ticker-move {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -20,12 +34,11 @@
             
             <!-- زرار القائمة على الشمال -->
             <div class="relative" dir="rtl">
-                <button onclick="toggleMenu()" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
+                <button onclick="toggleMenu(event)" id="menu-btn" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
                     <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💻 البرامج والكيبوردات</a>
                     <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">🎮 الألعاب</a>
-                    <!-- زرار التواصل مع المطور (جوه القائمة بس ومش في الرئيسية) -->
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
@@ -38,10 +51,18 @@
         </div>
     </header>
 
+    <!-- شريط موجز الأخبار الذكي (بيتحدث أوتوماتيكياً) -->
+    <div class="bg-slate-900 border-y border-slate-800 py-2 overflow-hidden text-xs text-cyan-300">
+        <div class="ticker-wrap">
+            <div class="ticker-move" id="ticker-content">
+                <!-- هيتملى أوتوماتيكياً بالبايثون/جافاسكريبت من البرامج المضافة -->
+                <span class="mx-4">🔥 أهلاً بكم في موقع حدوتة الشبراوي - جاري تحميل أحدث البرامج...</span>
+            </div>
+        </div>
+    </div>
+
     <!-- المحتوى -->
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
-        <!-- إعلان 1 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">إعلان علوي</div>
 
         <img src="me.png" alt="حدوتة الشبراوي" class="w-28 h-28 mx-auto rounded-full border-2 border-cyan-500/30 mb-4 object-cover">
         <h2 class="text-xl font-bold mb-3 text-white">كل اللي بتدور عليه هنا!</h2>
@@ -51,17 +72,20 @@
             الموقع ده هتلاقي فيه أي حاجة أنت بتدور عليها تخص عالم البرمجيات، وبكل ثقة مفيش برامج مش شغالة، مفيش اشتغالات زي بقيت المواقع. اللي هتلاقيه هنا البرامج اللي شغالة واللي مضمونة 100% بس.
         </p>
 
-        <!-- إعلان 2 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">إعلان وسطى</div>
-
-        <!-- الأقسام -->
+        <!-- الأقسام الرئيسية -->
         <div class="space-y-3 mb-6">
             <a href="programs.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-cyan-400 font-bold hover:border-cyan-500 transition">💻 <span class="mr-3">البرامج والكيبوردات</span></a>
             <a href="games.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-orange-400 font-bold hover:border-cyan-500 transition">🎮 <span class="mr-3">الألعاب المهكرة</span></a>
         </div>
 
-        <!-- إعلان 3 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs">إعلان سفلي</div>
+        <!-- قسم البرامج المضافة حديثاً (يظهر أوتوماتيكياً باحترافية) -->
+        <div class="text-right mb-4">
+            <h3 class="text-sm font-bold text-slate-400 mb-3">🚀 أحدث الإضافات والبرامج:</h3>
+            <div id="latest-programs-list" class="space-y-3">
+                <!-- عناصر البرامج هتظهر هنا ديناميكياً -->
+            </div>
+        </div>
+
     </main>
 
     <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
@@ -69,16 +93,58 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById( dropdown ).classList.toggle( active ); }
+        // إظهار وإخفاء القائمة المنسدلة بشكل سليم
+        function toggleMenu(event) {
+            event.stopPropagation();
+            document.getElementById( dropdown ).classList.toggle( active );
+        }
         
         window.onclick = function(event) {
-            if (!event.target.matches( button )) {
+            if (!event.target.matches( #menu-btn )) {
                 var dropdowns = document.getElementsByClassName("dropdown-menu");
                 for (var i = 0; i < dropdowns.length; i++) {
                     dropdowns[i].classList.remove( active );
                 }
             }
         }
+
+        // نظام ذكي لجلب البرامج وعرضها أوتوماتيكياً في الرئيسية
+        // (يمكنك تخزين البرامج في LocalStorage أو ملف JSON مشترك لتظهر هنا مباشرة)
+        const samplePrograms = [
+            { name: "كيبورد السراب العجيب", image: "me.png", link: "programs.html" },
+            { name: "برنامج حماية الكافيه", image: "me.png", link: "programs.html" }
+        ];
+
+        function loadDynamicContent() {
+            const tickerContainer = document.getElementById( ticker-content );
+            const programsContainer = document.getElementById( latest-programs-list );
+            
+            let tickerHtml =   ;
+            let programsHtml =   ;
+
+            samplePrograms.forEach(prog => {
+                // شريط الأخبار
+                tickerHtml += `<span class="mx-4 text-cyan-400 font-bold">⚡ متاح الان: ${prog.name}</span>`;
+                
+                // قائمة البرامج الاحترافية في الصفحة الرئيسية
+                programsHtml += `
+                    <div class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded-xl">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <img src="${prog.image}" class="w-10 h-10 rounded-lg object-cover border border-cyan-500/20">
+                            <span class="text-sm font-bold text-white">${prog.name}</span>
+                        </div>
+                        <a href="${prog.link}" class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">الذهاب للتحميل</a>
+                    </div>
+                `;
+            });
+
+            // تكرار شريط الأخبار عشان الحركة تبמו متصلة
+            tickerContainer.innerHTML = tickerHtml + tickerHtml;
+            programsContainer.innerHTML = programsHtml;
+        }
+
+        // تشغيل الدالة عند فتح الصفحة
+        loadDynamicContent();
     </script>
 </body>
 </html>
