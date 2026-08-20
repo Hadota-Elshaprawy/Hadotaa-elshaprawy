@@ -14,22 +14,28 @@
 <body class="min-h-screen flex flex-col">
     <header class="bg-slate-950 border-b border-slate-800 p-3 sticky top-0 z-50">
         <div class="flex items-center justify-between w-full max-w-md mx-auto" dir="ltr">
+            
+            <!-- زر القائمة -->
             <div class="relative" dir="rtl">
-                <button onclick="toggleMenu()" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
+                <button id="menuBtn" onclick="toggleMenu(event)" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm focus:outline-none">القائمة ☰</button>
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
-                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800"> البرامج و الكيبوردات</a>
-                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800"> الألعاب</a>
+                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">البرامج و الكيبوردات</a>
+                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الألعاب</a>
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
-            <h1 class="text-lg font-black text-cyan-400" dir="rtl">التواصل مع المطور</h1>
+
+            <!-- اسم الموقع (لينك للرئيسية) -->
+            <a href="index.html" class="text-lg font-black text-cyan-400 hover:text-cyan-300 transition-all" dir="rtl">حدوتة الشبراوي</a>
+            
             <div class="w-[84px]"></div>
         </div>
     </header>
 
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6"> حدوته الشبراوي</div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">حدوتة الشبراوي</div>
+        
         <img src="me.png" alt="حدوتة الشبراوي" class="w-24 h-24 mx-auto rounded-full border-2 border-cyan-500/30 mb-4 object-cover">
         <h2 class="text-xl font-bold mb-2 text-white">تواصل مع حدوتة الشبراوي</h2>
         <p class="text-xs text-slate-400 mb-6">لو عندك أي استفسار أو مشكلة، تقدر تتواصل معانا مباشرة عبر الوسائل التالية:</p>
@@ -38,15 +44,26 @@
             <a href="https://wa.me/" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-emerald-400 font-bold hover:border-cyan-500 transition">💬 <span class="mr-3">راسلنا على واتساب</span></a>
             <a href="https://t.me/" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-cyan-400 font-bold hover:border-cyan-500 transition">✈️ <span class="mr-3">قناتنا على تيليجرام</span></a>
         </div>
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs"> حدوته الشبراوي</div>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs">حدوتة الشبراوي</div>
     </main>
 
     <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
+
+    <!-- سكربت القائمة المتوافق مع باقي الموقع -->
     <script>
-        function toggleMenu() { document.getElementById('dropdown').classList.toggle('active'); }
-        window.onclick = function(event) { if (!event.target.matches('button')) { document.getElementById('dropdown').classList.remove('active'); } }
+        function toggleMenu(event) {
+            event.stopPropagation();
+            document.getElementById('dropdown').classList.toggle('active');
+        }
+        window.onclick = function(event) {
+            const dropdown = document.getElementById('dropdown');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        }
     </script>
 </body>
 </html>
