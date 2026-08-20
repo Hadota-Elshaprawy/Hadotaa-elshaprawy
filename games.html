@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>الألعاب المهكرة - حدوتة الشبراوي</title>
+    <title>الألعاب - حدوتة الشبراوي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family:  Amiri ,  Cairo , sans-serif; background-color: #090d16; color: #f1f5f9; }
@@ -19,15 +19,12 @@
                 <button id="menuBtn" onclick="toggleMenu(event)" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm focus:outline-none">القائمة ☰</button>
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
-                    <a href="whatsapp.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💬 الواتساب</a>
-                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💻 البرامج</a>
-                    <a href="keyboards.html" class="block px-4 py-2 text-sm hover:bg-slate-800">⌨️ الكيبوردات</a>
-                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">🎮 الألعاب</a>
+                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">البرامج و الكيبوردات</a>
+                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الألعاب</a>
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
             
-            <!-- اسم الموقع يرجع للرئيسية -->
             <a href="index.html" class="text-lg font-black text-cyan-400 hover:text-cyan-300 transition-all" dir="rtl">الألعاب المهكرة</a>
             
             <div class="w-[84px]"></div>
@@ -37,17 +34,18 @@
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">إعلان علوي</div>
         <h2 class="text-xl font-bold mb-4 text-orange-400">أقوى الألعاب بفلوس غير محدودة</h2>
+        
         <div class="space-y-3 mb-6">
             <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-right">
                 <h3 class="font-bold text-white mb-1">8 Ball Pool (مهكرة)</h3>
                 <p class="text-xs text-slate-400 mb-3">موارد غير محدودة وفتح جميع المراحل.</p>
-                <a href="javascript:void(0)" 
-                   onclick="openDownload( https://www.mediafire.com/file/x5yck10xn5fuos0/8_Ball_Pool_56.26.0.apk )" 
-                   class="block w-full py-2 bg-orange-600 hover:bg-orange-500 text-white text-center rounded-xl font-bold text-sm">
+                <button onclick="openDownload( https://www.mediafire.com/file/x5yck10xn5fuos0/8_Ball_Pool_56.26.0.apk )" 
+                   class="block w-full py-2 bg-orange-600 hover:bg-orange-500 text-white text-center rounded-xl font-bold text-sm cursor-pointer">
                    تحميل اللعبة عبر HD Downloader
-                </a>
+                </button>
             </div>
         </div>
+
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs">إعلان سفلي</div>
     </main>
 
