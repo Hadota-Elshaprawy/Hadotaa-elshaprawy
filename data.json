@@ -1,0 +1,22 @@
+{
+  "announcements": [
+    "✨ تم إضافة HD كيبورد الجديد كلياً!",
+    "🎮 حمل لعبة 8 Ball Pool المهكرة بأحدث إصدار!",
+    "🚀 جميع التحميلات حصرياً عبر تطبيق HD Downloader!"
+  ],
+  "items": [
+    {
+      "name": "HD كيبورد",
+      "desc": "زغرفة وخطوط عربية وإنجليزية",
+      "page": "programs.html",
+      "badgeColor": "text-cyan-400"
+    },
+    {
+      "name": "8 Ball Pool",
+      "desc": "نسخة مهكرة وموارد غير محدودة",
+      "page": "games.html",
+      "badgeColor": "text-orange-400"
+    }
+  ]
+}
+
