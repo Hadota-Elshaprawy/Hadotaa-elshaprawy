@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>البرامج المكركة - حدوتة الشبراوي</title>
+    <title>البرامج و الكيبوردات - حدوتة الشبراوي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Amiri', 'Cairo', sans-serif; background-color: #090d16; color: #f1f5f9; }
@@ -32,7 +32,6 @@
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6"> حدوته الشبراوي</div>
         <h2 class="text-xl font-bold mb-4 text-cyan-400"> أحدث البرامج </h2>
         <div class="space-y-3 mb-6">
-            <div class="space-y-3 mb-6">
             <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-right">
                 <h3 class="font-bold text-white mb-1">HD كيبورد</h3>
                 <p class="text-xs text-slate-400 mb-3">كيبورد جديد فيه زغرفة فيس و خطوط انجليزي و ميزة الحافظه و مميزات كتير</p>
@@ -51,8 +50,21 @@
     <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
+
     <script>
         function toggleMenu() { document.getElementById('dropdown').classList.toggle('active'); }
+        
+        // السكربت الذكي للتحويل
+        function openDownload(fileUrl) {
+            // محاولة فتح التطبيق
+            window.location.href = "hddownloader://download?url=" + encodeURIComponent(fileUrl);
+            
+            // إذا لم يتم فتح التطبيق خلال ثانيتين، وجه المستخدم لصفحة تحميل التطبيق
+            setTimeout(function() {
+                window.location.href = "download-app.html"; 
+            }, 2000);
+        }
+
         window.onclick = function(event) { if (!event.target.matches('button')) { document.getElementById('dropdown').classList.remove('active'); } }
     </script>
 </body>
