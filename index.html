@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,7 +6,7 @@
     <title>حدوتة الشبراوي - الصفحة الرئيسية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family:  Amiri ,  Cairo , sans-serif; background-color: #090d16; color: #f1f5f9; }
+        body { font-family: 'Amiri', 'Cairo', sans-serif; background-color: #090d16; color: #f1f5f9; }
         .dropdown-menu { display: none; }
         .dropdown-menu.active { display: block; }
         @keyframes marquee {
@@ -26,8 +25,10 @@
     <!-- الهيدر -->
     <header class="bg-slate-950 border-b border-slate-800 p-3 sticky top-0 z-50">
         <div class="flex items-center justify-between w-full max-w-md mx-auto" dir="ltr">
+            
+            <!-- زر القائمة المنسدلة -->
             <div class="relative" dir="rtl">
-                <button onclick="toggleMenu()" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
+                <button id="menuBtn" onclick="toggleMenu(event)" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm focus:outline-none">القائمة ☰</button>
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
                     <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">البرامج و الكيبوردات</a>
@@ -35,7 +36,10 @@
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
-            <h1 class="text-lg font-black text-cyan-400" dir="rtl">حدوتة الشبراوي</h1>
+
+            <!-- اسم الموقع (يضغط عليه يرجع للرئيسية) -->
+            <a href="index.html" class="text-lg font-black text-cyan-400 hover:text-cyan-300 transition-all" dir="rtl">حدوتة الشبراوي</a>
+            
             <div class="w-[84px]"></div>
         </div>
     </header>
@@ -79,7 +83,7 @@
             </a>
         </div>
 
-        <!-- المختارات السريعة (تظهر مباشرة من غير أخطاء) -->
+        <!-- المختارات السريعة -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-right mb-4">
             <h3 class="text-sm font-bold text-orange-400 mb-3 border-b border-slate-800 pb-2">⭐ مختارات سريعة من الموقع</h3>
             
@@ -111,9 +115,22 @@
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
 
+    <!-- سكربت القائمة المنسدلة المحسّن -->
     <script>
-        function toggleMenu() { document.getElementById( dropdown ).classList.toggle( active ); }
-        window.onclick = function(event) { if (!event.target.matches( button )) { document.getElementById( dropdown ).classList.remove( active ); } }
+        function toggleMenu(event) {
+            event.stopPropagation();
+            document.getElementById('dropdown').classList.toggle('active');
+        }
+
+        // إغلاق القائمة لو المستخدم ضغط في أي مكان تاني برا القائمة
+        window.onclick = function(event) {
+            const dropdown = document.getElementById('dropdown');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        }
     </script>
 </body>
 </html>
+
