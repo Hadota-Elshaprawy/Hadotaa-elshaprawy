@@ -4,25 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>حدوتة الشبراوي</title>
+    <title>حدوتة الشبراوي - الصفحة الرئيسية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family:  Amiri ,  Cairo , sans-serif; background-color: #090d16; color: #f1f5f9; }
         .dropdown-menu { display: none; }
         .dropdown-menu.active { display: block; }
-        /* ستايل شريط الأخبار المتحرك */
-        .ticker-wrap {
-            overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-        .ticker-move {
+        .animate-marquee {
             display: inline-block;
-            animation: ticker 25s linear infinite;
-        }
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
         }
     </style>
 </head>
@@ -31,120 +26,107 @@
     <!-- الهيدر -->
     <header class="bg-slate-950 border-b border-slate-800 p-3 sticky top-0 z-50">
         <div class="flex items-center justify-between w-full max-w-md mx-auto" dir="ltr">
-            
-            <!-- زرار القائمة على الشمال -->
             <div class="relative" dir="rtl">
-                <button onclick="toggleMenu(event)" id="menu-btn" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
+                <button onclick="toggleMenu()" class="bg-slate-900 border border-slate-700 px-4 py-2 rounded-lg text-cyan-400 font-bold text-sm">القائمة ☰</button>
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
-                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">💻 البرامج والكيبوردات</a>
-                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">🎮 الألعاب</a>
+                    <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">البرامج و الكيبوردات</a>
+                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الألعاب</a>
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
-
-            <!-- العنوان في النص -->
             <h1 class="text-lg font-black text-cyan-400" dir="rtl">حدوتة الشبراوي</h1>
-            
-            <!-- عنصر توازن على اليمين -->
-            <div class="w-[84px]"></div> 
+            <div class="w-[84px]"></div>
         </div>
     </header>
 
-    <!-- شريط موجز الأخبار الذكي (بيتحدث أوتوماتيكياً) -->
-    <div class="bg-slate-900 border-y border-slate-800 py-2 overflow-hidden text-xs text-cyan-300">
-        <div class="ticker-wrap">
-            <div class="ticker-move" id="ticker-content">
-                <!-- هيتملى أوتوماتيكياً بالبايثون/جافاسكريبت من البرامج المضافة -->
-                <span class="mx-4">🔥 أهلاً بكم في موقع حدوتة الشبراوي - جاري تحميل أحدث البرامج...</span>
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
+        
+        <!-- الشريط الإعلاني المتحرك (يتم تعبئته أوتوماتيك من ملف الـ JSON) -->
+        <div class="bg-slate-900 border border-cyan-500/30 rounded-xl p-3 mb-6 overflow-hidden relative shadow-lg shadow-cyan-950/50">
+            <div class="flex items-center">
+                <span class="bg-cyan-600 text-white text-[10px] font-bold px-2 py-1 rounded-md ml-2 z-10 shrink-0">جديد 🔥</span>
+                <div class="overflow-hidden whitespace-nowrap w-full text-right">
+                    <p id="marqueeText" class="text-xs text-cyan-300 animate-marquee font-medium">
+                        جاري تحميل التحديثات...
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- المحتوى -->
-    <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
-
-        <img src="me.png" alt="حدوتة الشبراوي" class="w-28 h-28 mx-auto rounded-full border-2 border-cyan-500/30 mb-4 object-cover">
-        <h2 class="text-xl font-bold mb-3 text-white">كل اللي بتدور عليه هنا!</h2>
-        
-        <!-- التعريف -->
-        <p class="text-slate-300 text-sm bg-slate-900/50 p-4 rounded-2xl border border-slate-800 mb-6 leading-relaxed">
-            الموقع ده هتلاقي فيه أي حاجة أنت بتدور عليها تخص عالم البرمجيات، وبكل ثقة مفيش برامج مش شغالة، مفيش اشتغالات زي بقيت المواقع. اللي هتلاقيه هنا البرامج اللي شغالة واللي مضمونة 100% بس.
-        </p>
-
-        <!-- الأقسام الرئيسية -->
-        <div class="space-y-3 mb-6">
-            <a href="programs.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-cyan-400 font-bold hover:border-cyan-500 transition">💻 <span class="mr-3">البرامج والكيبوردات</span></a>
-            <a href="games.html" class="flex items-center p-3 bg-slate-900 border border-slate-800 rounded-2xl text-orange-400 font-bold hover:border-cyan-500 transition">🎮 <span class="mr-3">الألعاب المهكرة</span></a>
+        <!-- قسم الترحيب -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 mb-6 text-center shadow-md">
+            <h2 class="text-xl font-bold mb-2 text-cyan-400">مرحباً بك في موقع حدوتة الشبراوي</h2>
+            <p class="text-xs text-slate-400 leading-relaxed">وجهتك الأولى لتحميل أحدث البرامج، الكيبوردات المزخرفة، والألعاب المهكرة بروابط مباشرة وآمنة عبر تطبيقنا الرسمي.</p>
+            
+            <a href="download-app.html" class="mt-4 block w-full py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white text-center rounded-xl font-bold text-sm shadow-md transition-all">
+                تحميل تطبيق HD Downloader الرسمي 📥
+            </a>
         </div>
 
-        <!-- قسم البرامج المضافة حديثاً (يظهر أوتوماتيكياً باحترافية) -->
-        <div class="text-right mb-4">
-            <h3 class="text-sm font-bold text-slate-400 mb-3">🚀 أحدث الإضافات والبرامج:</h3>
-            <div id="latest-programs-list" class="space-y-3">
-                <!-- عناصر البرامج هتظهر هنا ديناميكياً -->
+        <!-- قسم أقسام الموقع -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <a href="programs.html" class="p-4 bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl transition-all text-center">
+                <div class="text-2xl mb-1">💻</div>
+                <h3 class="font-bold text-sm text-white">البرامج</h3>
+                <p class="text-[10px] text-slate-400 mt-1">تصفح الكيبوردات والبرامج</p>
+            </a>
+            <a href="games.html" class="p-4 bg-slate-900 border border-slate-800 hover:border-orange-500/50 rounded-xl transition-all text-center">
+                <div class="text-2xl mb-1">🎮</div>
+                <h3 class="font-bold text-sm text-white">الألعاب</h3>
+                <p class="text-[10px] text-slate-400 mt-1">أقوى الألعاب المهكرة</p>
+            </a>
+        </div>
+
+        <!-- المكان المخصص في آخر الصفحة (يتم تعبئته أوتوماتيك من ملف الـ JSON) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-right mb-4">
+            <h3 class="text-sm font-bold text-orange-400 mb-3 border-b border-slate-800 pb-2">⭐ مختارات سريعة من الموقع</h3>
+            
+            <div id="quickItemsContainer" class="space-y-3">
+                <!-- سيتم جلب العناصر أوتوماتيك هنا -->
             </div>
         </div>
 
     </main>
 
+    <!-- الفوتر -->
     <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
 
+    <!-- السكربت لجلب وتحديث العناصر أوتوماتيك -->
     <script>
-        // إظهار وإخفاء القائمة المنسدلة بشكل سليم
-        function toggleMenu(event) {
-            event.stopPropagation();
-            document.getElementById( dropdown ).classList.toggle( active );
-        }
-        
-        window.onclick = function(event) {
-            if (!event.target.matches( #menu-btn )) {
-                var dropdowns = document.getElementsByClassName("dropdown-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    dropdowns[i].classList.remove( active );
+        function toggleMenu() { document.getElementById( dropdown ).classList.toggle( active ); }
+        window.onclick = function(event) { if (!event.target.matches( button )) { document.getElementById( dropdown ).classList.remove( active ); } }
+
+        // جلب البيانات من ملف data.json وعرضها أوتوماتيك
+        fetch( data.json )
+            .then(response => response.json())
+            .then(data => {
+                // 1. تعبئة الشريط الإعلاني
+                if (data.announcements && data.announcements.length > 0) {
+                    document.getElementById( marqueeText ).innerText = data.announcements.join("   |   ");
                 }
-            }
-        }
 
-        // نظام ذكي لجلب البرامج وعرضها أوتوماتيكياً في الرئيسية
-        // (يمكنك تخزين البرامج في LocalStorage أو ملف JSON مشترك لتظهر هنا مباشرة)
-        const samplePrograms = [
-            { name: "كيبورد السراب العجيب", image: "me.png", link: "programs.html" },
-            { name: "برنامج حماية الكافيه", image: "me.png", link: "programs.html" }
-        ];
-
-        function loadDynamicContent() {
-            const tickerContainer = document.getElementById( ticker-content );
-            const programsContainer = document.getElementById( latest-programs-list );
-            
-            let tickerHtml =   ;
-            let programsHtml =   ;
-
-            samplePrograms.forEach(prog => {
-                // شريط الأخبار
-                tickerHtml += `<span class="mx-4 text-cyan-400 font-bold">⚡ متاح الان: ${prog.name}</span>`;
+                // 2. تعبئة المختارات السريعة في آخر الصفحة
+                const container = document.getElementById( quickItemsContainer );
+                container.innerHTML = ""; // تفريغ المكان الأول
                 
-                // قائمة البرامج الاحترافية في الصفحة الرئيسية
-                programsHtml += `
-                    <div class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded-xl">
-                        <div class="flex items-center space-x-3 space-x-reverse">
-                            <img src="${prog.image}" class="w-10 h-10 rounded-lg object-cover border border-cyan-500/20">
-                            <span class="text-sm font-bold text-white">${prog.name}</span>
+                data.items.forEach(item => {
+                    const itemHtml = `
+                        <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                            <div>
+                                <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                                <p class="text-[10px] text-slate-400">${item.desc}</p>
+                            </div>
+                            <a href="${item.page}" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 ${item.badgeColor} text-xs rounded-lg font-bold">التفاصيل</a>
                         </div>
-                        <a href="${prog.link}" class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 text-xs font-bold px-3 py-1.5 rounded-lg transition">الذهاب للتحميل</a>
-                    </div>
-                `;
-            });
-
-            // تكرار شريط الأخبار عشان الحركة تبמו متصلة
-            tickerContainer.innerHTML = tickerHtml + tickerHtml;
-            programsContainer.innerHTML = programsHtml;
-        }
-
-        // تشغيل الدالة عند فتح الصفحة
-        loadDynamicContent();
+                    `;
+                    container.innerHTML += itemHtml;
+                });
+            })
+            .catch(error => console.log( خطأ في تحميل البيانات: , error));
     </script>
 </body>
 </html>
