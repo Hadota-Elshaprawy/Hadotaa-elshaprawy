@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>البرامج  - حدوتة الشبراوي</title>
+    <title>البرامج - حدوتة الشبراوي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family:  Amiri ,  Cairo , sans-serif; background-color: #090d16; color: #f1f5f9; }
+        body { font-family: 'Amiri', 'Cairo', sans-serif; background-color: #090d16; color: #f1f5f9; }
         .dropdown-menu { display: none; }
         .dropdown-menu.active { display: block; }
     </style>
@@ -20,12 +19,11 @@
                 <div id="dropdown" class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-right">
                     <a href="index.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الرئيسية</a>
                     <a href="programs.html" class="block px-4 py-2 text-sm hover:bg-slate-800">البرامج و الكيبوردات</a>
-                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800"> الألعاب</a>
+                    <a href="games.html" class="block px-4 py-2 text-sm hover:bg-slate-800">الألعاب</a>
                     <a href="contact.html" class="block px-4 py-2 text-sm text-cyan-400 font-bold border-t border-slate-800 mt-1 pt-2 hover:bg-slate-800">📞 التواصل مع المطور</a>
                 </div>
             </div>
             
-            <!-- اسم الموقع يرجع للرئيسية -->
             <a href="index.html" class="text-lg font-black text-cyan-400 hover:text-cyan-300 transition-all" dir="rtl">البرامج</a>
             
             <div class="w-[84px]"></div>
@@ -33,20 +31,21 @@
     </header>
 
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6"> حدوته الشبراوي</div>
-        <h2 class="text-xl font-bold mb-4 text-cyan-400"> أحدث البرامج </h2>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs mb-6">حدوتة الشبراوي</div>
+        <h2 class="text-xl font-bold mb-4 text-cyan-400">أحدث البرامج</h2>
+        
         <div class="space-y-3 mb-6">
             <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-right">
                 <h3 class="font-bold text-white mb-1">HD كيبورد</h3>
                 <p class="text-xs text-slate-400 mb-3">كيبورد جديد فيه زغرفة فيس و خطوط انجليزي و ميزة الحافظه و مميزات كتير</p>
-                <a href="javascript:void(0)" 
-                   onclick="openDownload( https://www.mediafire.com/file/hsgqoovyoa7i5s6/HadoTa_keyboard.apk/file )" 
-                   class="block w-full py-2 bg-orange-600 hover:bg-orange-500 text-white text-center rounded-xl font-bold text-sm">
+                <button onclick="openDownload('https://www.mediafire.com/file/hsgqoovyoa7i5s6/HadoTa_keyboard.apk/file')" 
+                   class="block w-full py-2 bg-orange-600 hover:bg-orange-500 text-white text-center rounded-xl font-bold text-sm cursor-pointer">
                    تحميل البرنامج عبر HD Downloader
-                </a>
+                </button>
             </div>
         </div>
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs"> حدوته الشبراوي</div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-600 text-xs">حدوتة الشبراوي</div>
     </main>
 
     <footer class="text-center p-4 text-slate-500 text-[10px] border-t border-slate-900">
@@ -56,13 +55,13 @@
     <script>
         function toggleMenu(event) {
             event.stopPropagation();
-            document.getElementById( dropdown ).classList.toggle( active );
+            document.getElementById('dropdown').classList.toggle('active');
         }
         window.onclick = function(event) {
-            const dropdown = document.getElementById( dropdown );
-            const menuBtn = document.getElementById( menuBtn );
+            const dropdown = document.getElementById('dropdown');
+            const menuBtn = document.getElementById('menuBtn');
             if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
-                dropdown.classList.remove( active );
+                dropdown.classList.remove('active');
             }
         }
 
