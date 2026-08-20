@@ -43,13 +43,13 @@
     <!-- المحتوى الرئيسي -->
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
         
-        <!-- الشريط الإعلاني المتحرك (يتم تعبئته أوتوماتيك من ملف الـ JSON) -->
+        <!-- الشريط الإعلاني المتحرك -->
         <div class="bg-slate-900 border border-cyan-500/30 rounded-xl p-3 mb-6 overflow-hidden relative shadow-lg shadow-cyan-950/50">
             <div class="flex items-center">
                 <span class="bg-cyan-600 text-white text-[10px] font-bold px-2 py-1 rounded-md ml-2 z-10 shrink-0">جديد 🔥</span>
                 <div class="overflow-hidden whitespace-nowrap w-full text-right">
-                    <p id="marqueeText" class="text-xs text-cyan-300 animate-marquee font-medium">
-                        جاري تحميل التحديثات...
+                    <p class="text-xs text-cyan-300 animate-marquee font-medium">
+                        ✨ تم إضافة HD كيبورد الجديد كلياً! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🎮 حمل لعبة 8 Ball Pool المهكرة بأحدث إصدار! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚀 جميع التحميلات حصرياً عبر تطبيق HD Downloader!
                     </p>
                 </div>
             </div>
@@ -79,12 +79,28 @@
             </a>
         </div>
 
-        <!-- المكان المخصص في آخر الصفحة (يتم تعبئته أوتوماتيك من ملف الـ JSON) -->
+        <!-- المختارات السريعة (تظهر مباشرة من غير أخطاء) -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 text-right mb-4">
             <h3 class="text-sm font-bold text-orange-400 mb-3 border-b border-slate-800 pb-2">⭐ مختارات سريعة من الموقع</h3>
             
-            <div id="quickItemsContainer" class="space-y-3">
-                <!-- سيتم جلب العناصر أوتوماتيك هنا -->
+            <div class="space-y-3">
+                <!-- عنصر 1: كيبورد -->
+                <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                    <div>
+                        <h4 class="text-xs font-bold text-white">HD كيبورد</h4>
+                        <p class="text-[10px] text-slate-400">زغرفة وخطوط عربية وإنجليزية</p>
+                    </div>
+                    <a href="programs.html" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs rounded-lg font-bold">التفاصيل</a>
+                </div>
+
+                <!-- عنصر 2: لعبة -->
+                <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                    <div>
+                        <h4 class="text-xs font-bold text-white">8 Ball Pool</h4>
+                        <p class="text-[10px] text-slate-400">نسخة مهكرة وموارد غير محدودة</p>
+                    </div>
+                    <a href="games.html" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-orange-400 text-xs rounded-lg font-bold">التفاصيل</a>
+                </div>
             </div>
         </div>
 
@@ -95,38 +111,9 @@
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
 
-    <!-- السكربت لجلب وتحديث العناصر أوتوماتيك -->
     <script>
         function toggleMenu() { document.getElementById( dropdown ).classList.toggle( active ); }
         window.onclick = function(event) { if (!event.target.matches( button )) { document.getElementById( dropdown ).classList.remove( active ); } }
-
-        // جلب البيانات من ملف data.json وعرضها أوتوماتيك
-        fetch( data.json )
-            .then(response => response.json())
-            .then(data => {
-                // 1. تعبئة الشريط الإعلاني
-                if (data.announcements && data.announcements.length > 0) {
-                    document.getElementById( marqueeText ).innerText = data.announcements.join("   |   ");
-                }
-
-                // 2. تعبئة المختارات السريعة في آخر الصفحة
-                const container = document.getElementById( quickItemsContainer );
-                container.innerHTML = ""; // تفريغ المكان الأول
-                
-                data.items.forEach(item => {
-                    const itemHtml = `
-                        <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
-                            <div>
-                                <h4 class="text-xs font-bold text-white">${item.name}</h4>
-                                <p class="text-[10px] text-slate-400">${item.desc}</p>
-                            </div>
-                            <a href="${item.page}" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 ${item.badgeColor} text-xs rounded-lg font-bold">التفاصيل</a>
-                        </div>
-                    `;
-                    container.innerHTML += itemHtml;
-                });
-            })
-            .catch(error => console.log( خطأ في تحميل البيانات: , error));
     </script>
 </body>
 </html>
