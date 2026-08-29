@@ -16,7 +16,7 @@
         .animate-marquee {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 15s linear infinite;
+            animation: marquee 18s linear infinite;
         }
     </style>
 </head>
@@ -47,13 +47,18 @@
     <!-- المحتوى الرئيسي -->
     <main class="flex-grow p-4 w-full max-w-md mx-auto text-center">
         
+        <!-- صورة اللوجو -->
+        <div class="mb-4 flex justify-center">
+            <img src="me.png" alt="لوجو حدوتة الشبراوي" class="w-24 h-24 rounded-full border-2 border-cyan-500/50 shadow-lg shadow-cyan-950/50 object-cover">
+        </div>
+
         <!-- الشريط الإعلاني المتحرك -->
         <div class="bg-slate-900 border border-cyan-500/30 rounded-xl p-3 mb-6 overflow-hidden relative shadow-lg shadow-cyan-950/50">
             <div class="flex items-center">
                 <span class="bg-cyan-600 text-white text-[10px] font-bold px-2 py-1 rounded-md ml-2 z-10 shrink-0">جديد 🔥</span>
                 <div class="overflow-hidden whitespace-nowrap w-full text-right">
                     <p class="text-xs text-cyan-300 animate-marquee font-medium">
-                        ✨ تم إضافة HD كيبورد الجديد كلياً! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🎮 حمل لعبة 8 Ball Pool المهكرة بأحدث إصدار! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚀 جميع التحميلات حصرياً عبر تطبيق HD Downloader!
+                        ✨ تم إضافة HD كيبورد الجديد كلياً! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🎨 تم إضافة برنامج Picsart Pro بروابط التحميل المباشرة! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🎮 حمل لعبة 8 Ball Pool المهكرة بأحدث إصدار! &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 🚀 جميع التحميلات حصرياً عبر تطبيق HD Downloader!
                     </p>
                 </div>
             </div>
@@ -97,7 +102,16 @@
                     <a href="programs.html" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs rounded-lg font-bold">التفاصيل</a>
                 </div>
 
-                <!-- عنصر 2: لعبة -->
+                <!-- عنصر 2: بيكسارت -->
+                <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
+                    <div>
+                        <h4 class="text-xs font-bold text-white">Picsart Pro</h4>
+                        <p class="text-[10px] text-slate-400">تطبيق تعديل الصور الشهير باحترافية</p>
+                    </div>
+                    <a href="programs.html" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs rounded-lg font-bold">التفاصيل</a>
+                </div>
+
+                <!-- عنصر 3: لعبة -->
                 <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80">
                     <div>
                         <h4 class="text-xs font-bold text-white">8 Ball Pool</h4>
@@ -115,14 +129,11 @@
         <p>جميع الحقوق محفوظة © 2026 - حدوتة الشبراوي</p>
     </footer>
 
-    <!-- سكربت القائمة المنسدلة المحسّن -->
     <script>
         function toggleMenu(event) {
             event.stopPropagation();
             document.getElementById('dropdown').classList.toggle('active');
         }
-
-        // إغلاق القائمة لو المستخدم ضغط في أي مكان تاني برا القائمة
         window.onclick = function(event) {
             const dropdown = document.getElementById('dropdown');
             const menuBtn = document.getElementById('menuBtn');
@@ -133,4 +144,3 @@
     </script>
 </body>
 </html>
-
